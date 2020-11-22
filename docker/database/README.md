@@ -3,6 +3,6 @@ docker_databaseの起動の仕方と繋ぎ方
 
 
 docker build -t todo-db . 
-docker run --name mysql -p 3307:3306 todo-db
+docker run -d --rm --name mysql -p 3306:3306 todo-db
 
-mysql -u test_u -ptest_pw -h 127.0.0.1 -P 3307
+mysql -u test_u -ptest_pw -h 127.0.0.1

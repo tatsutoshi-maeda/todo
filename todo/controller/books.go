@@ -14,7 +14,7 @@ import (
 )
 
 func BookAdd(ctx *gin.Context) {
-	DB, _ := sql.Open("mysql", "test_u:test_pw@(127.0.0.1:3307)/todo_db?charset=utf8")
+	DB, _ := sql.Open("mysql", "test_u:test_pw@(127.0.0.1:3306)/todo_db?charset=utf8")
 	book := models.Book{}
 	err := ctx.Bind(&book)
 	if err != nil {
