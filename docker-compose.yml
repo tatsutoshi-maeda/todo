@@ -19,5 +19,7 @@ services:
     container_name: mysql
     build: ./docker/database/
     hostname: mysql
+    environment:
+      BIND-ADDRESS: 0.0.0.0
     ports:
       - "3306:3306"
