@@ -2,7 +2,6 @@ version: "3.8"
 services:
   api:
     container_name: api
-    # build: docker/api/
     build:
       context: .
       dockerfile: ./docker/api/Dockerfile
@@ -10,10 +9,8 @@ services:
       - 8080:8080
     links:
       - mysql
-    tty:
-      true
     volumes:
-      - ./todo:/go/src/api
+      - ./api:/go/src/api
 
   mysql:
     container_name: mysql

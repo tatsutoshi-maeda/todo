@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"net/http"
 	"strconv"
-	"todo/model"
-	"todo/models"
-	"todo/service"
+	"api/model"
+	"api/models"
+	"api/service"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"

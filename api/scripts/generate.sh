@@ -9,7 +9,7 @@ go get -u github.com/volatiletech/sqlboiler/drivers/sqlboiler-mysql
 
 export GO111MODULE=on
 
-cd ./../../todo
+cd ./../../api
 
 echo finish
 

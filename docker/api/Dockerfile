@@ -1,11 +1,10 @@
 FROM golang:1.13 as builder
-WORKDIR /todo
-COPY todo/. .
-ENV GO111MODULE=on
-RUN go build main.go 
+WORKDIR /api
+COPY api/. .
+RUN GO111MODULE=on go build main.go 
 
 FROM golang:1.13
-WORKDIR /todo
-COPY --from=builder /todo/main ./main
+WORKDIR /api
+COPY --from=builder /api/main ./main
 EXPOSE 8080
 ENTRYPOINT [ "./main"]

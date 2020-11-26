@@ -3,8 +3,8 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
-	"todo/controller"
-	"todo/middleware"
+	"api/controller"
+	"api/middleware"
 )
 
 func main() {
