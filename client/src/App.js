@@ -57,10 +57,21 @@ function App() {
         <HeaderUl>
           <HeaderLi focused={tab === 'list'} onClick={() => setTab('list')}>リスト</HeaderLi>
           <HeaderLi focused={tab === 'form'} onClick={() => setTab('form')}>フォーム</HeaderLi>
+          <HeaderLi focused={tab === 'book'} onClick={() => setTab('book')}>BOOK</HeaderLi>
         </HeaderUl>
       </Header>
       {
-        tab === 'list' ? <List langs={langs}/> : <Form onAddLang={addLang}/>
+        // 三項演算子と即時関数以外でJSXに分岐書くやり方探す
+        // tab === 'list' ? <List langs={langs}/> : <Form onAddLang={addLang}/>
+        (() => {
+          if (tab === 'list'){
+            return <List langs={langs}/> 
+          }else if (tab === 'form'){
+            return <Form onAddLang={addLang}/>
+          } else if (tab === 'book') {
+            return <div>BOOK</div>
+          }
+        }) ()
       }
     </div>
   );
