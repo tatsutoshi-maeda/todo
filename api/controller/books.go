@@ -36,8 +36,7 @@ func BookList(ctx *gin.Context) {
 	bookService := service.BookService{}
 	BookLists := bookService.GetBookList()
 	ctx.JSONP(http.StatusOK, gin.H{
-		"message": "ok",
-		"data":    BookLists,
+		"book":    BookLists,
 	})
 }
 

@@ -1,5 +1,5 @@
 FROM node:12.16.1
 WORKDIR /client
-RUN yarn install
+RUN npm install
 COPY client/. .
-ENTRYPOINT [ "yarn", "start" ]
+ENTRYPOINT [ "npm", "start" ]

@@ -14,20 +14,28 @@ padding: 8px 16px;
 }
 `
 
-export const List = ({ langs }) => {
+const books = [];
+
+// export const List = ({ langs }) => {
+    export const List = () => {
     
     useEffect(() => {
         console.log('List.jsのuseEffectが走った')
-
+        // books = handleClick();
         return () => {
             console.log('List.jsのuseEffectのunmountが走った')
         }
     })
     return (
         <Container>
-            {
+            {/* {
                 langs.map((lang, index) => {
                 return <ListItem key={index}>{ lang }</ListItem>
+                } )
+            } */}
+            {
+                books.map((book, index) => {
+                return <ListItem key={index}>{ book }</ListItem>
                 } )
             }
             <div>
