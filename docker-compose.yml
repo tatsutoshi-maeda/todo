@@ -35,4 +35,4 @@ services:
     links:
       - api
     volumes:
-      - ./client:/go/src/client
+      - ./client:/client
