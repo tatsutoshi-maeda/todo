@@ -12,7 +12,6 @@ List the libraries and other information needed to run this application.
 * npm 6.14.11 and above
 * docker
 * docker-compose
-* eslint v7.18.0
  
 # Usage
  
