@@ -1,10 +1,7 @@
 import { useEffect } from "react";
 import { handleClick } from "./service/Book";
 import styled from 'styled-components'
-
-const Container = styled.div`
-  padding: 12px 64px;
-`
+import { TabBodyContainer } from "./components/tab-body-container";
 
 const ListItem = styled.div`
 padding: 8px 16px;
@@ -16,8 +13,8 @@ padding: 8px 16px;
 
 const books = [];
 
-// export const List = ({ langs }) => {
-    export const List = () => {
+export const List = ({ langs }) => {
+    // export const List = () => {
     
     useEffect(() => {
         console.log('List.jsのuseEffectが走った')
@@ -27,20 +24,20 @@ const books = [];
         }
     })
     return (
-        <Container>
-            {/* {
+        <TabBodyContainer title = "取ってきたデータリスト（API未実装）">
+            {
                 langs.map((lang, index) => {
                 return <ListItem key={index}>{ lang }</ListItem>
                 } )
-            } */}
-            {
+            }
+            {/* {
                 books.map((book, index) => {
                 return <ListItem key={index}>{ book }</ListItem>
                 } )
-            }
+            } */}
             <div>
                 <button onClick={() => handleClick()}>Get Data</button>
             </div>
-        </Container>
+        </TabBodyContainer>
     )
 }
