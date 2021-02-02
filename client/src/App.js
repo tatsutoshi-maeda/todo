@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { List } from "./List"
 import { Form } from "./Form"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getLanguages } from "./const/languages";
 import { withLoading } from "./hoc/withLoading";
 

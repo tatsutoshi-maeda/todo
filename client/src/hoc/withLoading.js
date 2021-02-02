@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { useEffect, useState } from "react";
 
+// Higher-Order Conponent＋ライフサイクルまとめ
+
 const  LoadDiv = styled.div`
    padding: 36px;
 `
