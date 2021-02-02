@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { Button } from "./components/button"
 import { Modal } from "./components/modal"
 import styled from 'styled-components'
@@ -14,7 +13,7 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 24px;
-`
+`;
 
 export const FormModal = ({cancel, confirm})  => {
     return (
