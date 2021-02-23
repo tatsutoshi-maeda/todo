@@ -4,15 +4,17 @@ go 1.15
 
 require (
 	github.com/friendsofgo/errors v0.9.2
-	github.com/gin-contrib/cors v1.3.1 // indirect
+	github.com/gin-contrib/cors v1.3.1
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-playground/validator/v10 v10.4.1 // indirect
 	github.com/go-sql-driver/mysql v1.5.0
-	github.com/go-xorm/xorm v0.7.9
+	github.com/go-xorm/xorm v0.7.9 // indirect
 	github.com/golang/protobuf v1.4.3 // indirect
 	github.com/json-iterator/go v1.1.10 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
+	github.com/nullbio/inflect v0.0.0-20170731032957-3edb4592a77b // indirect
 	github.com/ugorji/go v1.2.0 // indirect
+	github.com/vattle/sqlboiler v2.5.0+incompatible // indirect
 	github.com/volatiletech/sqlboiler/v4 v4.3.0
 	github.com/volatiletech/strmangle v0.0.1
 	go.uber.org/multierr v1.6.0 // indirect

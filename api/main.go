@@ -1,18 +1,19 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/gin-contrib/cors"
-	_ "github.com/go-sql-driver/mysql"
 	"api/controller"
 	"api/middleware"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
 	engine := gin.Default()
 	// ミドルウェア
-    config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:3000"}
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"*"}
 	engine.Use(cors.New(config))
 	engine.Use(middleware.RecordUaAndTime)
 	bookEngine := engine.Group("/book")
