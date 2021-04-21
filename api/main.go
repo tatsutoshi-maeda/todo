@@ -16,14 +16,21 @@ func main() {
 	config.AllowOrigins = []string{"*"}
 	engine.Use(cors.New(config))
 	engine.Use(middleware.RecordUaAndTime)
-	bookEngine := engine.Group("/book")
+	Engine := engine.Group("/v1")
 	{
-		v1 := bookEngine.Group("/v1")
+		book := Engine.Group("/book")
 		{
-			v1.POST("/add", controller.BookAdd)
-			v1.GET("/list", controller.BookList)
-			v1.PUT("/update", controller.BookUpdate)
-			v1.DELETE("/delete", controller.BookDelete)
+			book.POST("/add", controller.BookAdd)
+			book.GET("/list", controller.BookList)
+			book.PUT("/update", controller.BookUpdate)
+			book.DELETE("/delete", controller.BookDelete)
+		}
+		user := Engine.Group("/user")
+		{
+			user.POST("/add", controller.UserAdd)
+			user.GET("/list", controller.UserList)
+			user.PUT("/update", controller.UserUpdate)
+			user.DELETE("/delete", controller.UserDelete)
 		}
 	}
 	engine.Run(":8080")

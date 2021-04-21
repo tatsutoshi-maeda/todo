@@ -725,12 +725,12 @@ func (o *Book) Upsert(ctx context.Context, exec boil.ContextExecutor, updateColu
 			bookPrimaryKeyColumns,
 		)
 
-		if len(update) == 0 {
+		if !updateColumns.IsNone() && len(update) == 0 {
 			return errors.New("models: unable to upsert book, could not build update column list")
 		}
 
 		ret = strmangle.SetComplement(ret, nzUniques)
-		cache.query = buildUpsertQueryMySQL(dialect, "book", update, insert)
+		cache.query = buildUpsertQueryMySQL(dialect, "`book`", update, insert)
 		cache.retQuery = fmt.Sprintf(
 			"SELECT %s FROM `book` WHERE %s",
 			strings.Join(strmangle.IdentQuoteSlice(dialect.LQ, dialect.RQ, ret), ","),

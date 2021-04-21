@@ -679,12 +679,12 @@ func (o *Branch) Upsert(ctx context.Context, exec boil.ContextExecutor, updateCo
 			branchPrimaryKeyColumns,
 		)
 
-		if len(update) == 0 {
+		if !updateColumns.IsNone() && len(update) == 0 {
 			return errors.New("models: unable to upsert branch, could not build update column list")
 		}
 
 		ret = strmangle.SetComplement(ret, nzUniques)
-		cache.query = buildUpsertQueryMySQL(dialect, "branch", update, insert)
+		cache.query = buildUpsertQueryMySQL(dialect, "`branch`", update, insert)
 		cache.retQuery = fmt.Sprintf(
 			"SELECT %s FROM `branch` WHERE %s",
 			strings.Join(strmangle.IdentQuoteSlice(dialect.LQ, dialect.RQ, ret), ","),

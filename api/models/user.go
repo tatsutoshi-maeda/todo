@@ -25,6 +25,11 @@ import (
 type User struct {
 	UserID string `boil:"user_id" json:"user_id" toml:"user_id" yaml:"user_id"`
 	Name   string `boil:"name" json:"name" toml:"name" yaml:"name"`
+	Rank   string `boil:"rank" json:"rank" toml:"rank" yaml:"rank"`
+	Exp    int    `boil:"exp" json:"exp" toml:"exp" yaml:"exp"`
+	Act    int    `boil:"act" json:"act" toml:"act" yaml:"act"`
+	Gold   int    `boil:"gold" json:"gold" toml:"gold" yaml:"gold"`
+	Stone  int    `boil:"stone" json:"stone" toml:"stone" yaml:"stone"`
 
 	R *userR `boil:"-" json:"-" toml:"-" yaml:"-"`
 	L userL  `boil:"-" json:"-" toml:"-" yaml:"-"`
@@ -33,9 +38,19 @@ type User struct {
 var UserColumns = struct {
 	UserID string
 	Name   string
+	Rank   string
+	Exp    string
+	Act    string
+	Gold   string
+	Stone  string
 }{
 	UserID: "user_id",
 	Name:   "name",
+	Rank:   "rank",
+	Exp:    "exp",
+	Act:    "act",
+	Gold:   "gold",
+	Stone:  "stone",
 }
 
 // Generated where
@@ -43,9 +58,19 @@ var UserColumns = struct {
 var UserWhere = struct {
 	UserID whereHelperstring
 	Name   whereHelperstring
+	Rank   whereHelperstring
+	Exp    whereHelperint
+	Act    whereHelperint
+	Gold   whereHelperint
+	Stone  whereHelperint
 }{
 	UserID: whereHelperstring{field: "`user`.`user_id`"},
 	Name:   whereHelperstring{field: "`user`.`name`"},
+	Rank:   whereHelperstring{field: "`user`.`rank`"},
+	Exp:    whereHelperint{field: "`user`.`exp`"},
+	Act:    whereHelperint{field: "`user`.`act`"},
+	Gold:   whereHelperint{field: "`user`.`gold`"},
+	Stone:  whereHelperint{field: "`user`.`stone`"},
 }
 
 // UserRels is where relationship names are stored.
@@ -69,8 +94,8 @@ func (*userR) NewStruct() *userR {
 type userL struct{}
 
 var (
-	userAllColumns            = []string{"user_id", "name"}
-	userColumnsWithoutDefault = []string{"user_id", "name"}
+	userAllColumns            = []string{"user_id", "name", "rank", "exp", "act", "gold", "stone"}
+	userColumnsWithoutDefault = []string{"user_id", "name", "rank", "exp", "act", "gold", "stone"}
 	userColumnsWithDefault    = []string{}
 	userPrimaryKeyColumns     = []string{"user_id"}
 )
@@ -839,12 +864,12 @@ func (o *User) Upsert(ctx context.Context, exec boil.ContextExecutor, updateColu
 			userPrimaryKeyColumns,
 		)
 
-		if len(update) == 0 {
+		if !updateColumns.IsNone() && len(update) == 0 {
 			return errors.New("models: unable to upsert user, could not build update column list")
 		}
 
 		ret = strmangle.SetComplement(ret, nzUniques)
-		cache.query = buildUpsertQueryMySQL(dialect, "user", update, insert)
+		cache.query = buildUpsertQueryMySQL(dialect, "`user`", update, insert)
 		cache.retQuery = fmt.Sprintf(
 			"SELECT %s FROM `user` WHERE %s",
 			strings.Join(strmangle.IdentQuoteSlice(dialect.LQ, dialect.RQ, ret), ","),

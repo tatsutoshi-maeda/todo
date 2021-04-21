@@ -1,5 +1,5 @@
 [mysql]
-  dbname="mydb"
+  dbname="todo_db"
   host="localhost"
   port=3306
   user="test_u"

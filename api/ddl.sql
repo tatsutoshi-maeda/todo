@@ -1,9 +1,13 @@
 create table user(
     user_id varchar(255) not null,
     name    varchar(255) not null,
+    rank varchar(255) not null,
+    exp int(11) not null,
+    act int(11) not null,
+    gold int(11) not null,
+    stone int(11) not null,
     primary key(user_id)
 );
-
 create table division(
     division_id int auto_increment,
     name    varchar(255) not null,

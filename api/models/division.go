@@ -848,12 +848,12 @@ func (o *Division) Upsert(ctx context.Context, exec boil.ContextExecutor, update
 			divisionPrimaryKeyColumns,
 		)
 
-		if len(update) == 0 {
+		if !updateColumns.IsNone() && len(update) == 0 {
 			return errors.New("models: unable to upsert division, could not build update column list")
 		}
 
 		ret = strmangle.SetComplement(ret, nzUniques)
-		cache.query = buildUpsertQueryMySQL(dialect, "division", update, insert)
+		cache.query = buildUpsertQueryMySQL(dialect, "`division`", update, insert)
 		cache.retQuery = fmt.Sprintf(
 			"SELECT %s FROM `division` WHERE %s",
 			strings.Join(strmangle.IdentQuoteSlice(dialect.LQ, dialect.RQ, ret), ","),
