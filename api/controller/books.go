@@ -39,9 +39,10 @@ func BookList(ctx *gin.Context) {
 		ctx.String(http.StatusInternalServerError, "Server Error")
 		return
 	}
-	ctx.JSONP(http.StatusOK, gin.H{
-		"book": books,
-	})
+	// ctx.JSONP(http.StatusOK, gin.H{
+	// 	"book": books,
+	// })
+	ctx.JSON(200, books)
 }
 
 func BookUpdate(ctx *gin.Context) {
