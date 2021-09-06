@@ -13,6 +13,7 @@ require (
 	github.com/json-iterator/go v1.1.10 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/nullbio/inflect v0.0.0-20170731032957-3edb4592a77b // indirect
+	github.com/stretchr/testify v1.4.0
 	github.com/ugorji/go v1.2.0 // indirect
 	github.com/vattle/sqlboiler v2.5.0+incompatible // indirect
 	github.com/volatiletech/sqlboiler/v4 v4.3.0
